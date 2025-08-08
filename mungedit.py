@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import hashlib
 import sys
 import argparse
@@ -34,13 +36,12 @@ letters = {
 }
 
 arguments = argparse.ArgumentParser(description="A program for generating munged passwords and checking their hashes")
-#arguments.add_argument("Input")
-arguments.add_argument("--read", type=ascii, help="File path for passwords to try")
-arguments.add_argument("--hash", type=ascii, help="Input the hash you want to crack")
-arguments.parse_args()
-if arguments.read and arguments.hash:
+arguments.add_argument("--read", type=str, help="File path for passwords to try")
+arguments.add_argument("--hash", type=str, help="Input the hash you want to crack")
+args = arguments.parse_args()
+if args.read and args.hash:
     try:
-        with open(arguments.read, "r") as file:
+        with open(args.read, "r") as file:
             found = False
             for line in file:
                 munged=[line]
@@ -58,13 +59,15 @@ if arguments.read and arguments.hash:
                 hash_munged = []
                 for word in munged:
                     hash = hashlib.md5(word.encode('utf-8')).hexdigest()
-                    if hash == arguments.hash:
+                    if hash == args.hash:
                         print(f"Password match: {word}")
                         found = True
                         break
                 if found:
-                    break            
+                    break
+                else:
+                    print("Not found for: " + line)
     except FileNotFoundError:
-        print("File " + arguments.read + " not found")
+        print("File " + args.read + " not found")
     except Exception as e:
         print(f"Error: {e}")
