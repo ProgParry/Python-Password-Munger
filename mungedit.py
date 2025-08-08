@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 
 import hashlib
-import sys
 import argparse
-import re
 
-#password = input("Enter password: ")
 letters = {
     "a" : ["A","@","4"],
     "b" : ["B","8"],
