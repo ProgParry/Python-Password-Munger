@@ -8,4 +8,4 @@ To do:
 
 [ ]  Modern hashes, salted hashes
 
-[ ]  Endings (123, !!!, !@#) 
+[ ]  Endings (123, !!!, !@#, years) 
