@@ -7,3 +7,5 @@ To do:
 [ ]  Take a hash list
 
 [ ]  Modern hashes, salted hashes
+
+[ ]  Endings (123, !!!, !@#) 
